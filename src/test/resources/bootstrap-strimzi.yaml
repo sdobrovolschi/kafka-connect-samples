@@ -1,0 +1,13 @@
+embedded:
+  kafka:
+    enabled: false
+  rabbitmq:
+    docker-image: rabbitmq:3.11.10-management-alpine
+    files-to-include:
+      - classpath-resource: rabbitmq/rabbitmq.conf
+        container-path: /
+      - classpath-resource: rabbitmq/definitions.json
+        container-path: /
+    env:
+      RABBITMQ_CONFIG_FILE: /rabbitmq.conf
+    vhost: virtual-host

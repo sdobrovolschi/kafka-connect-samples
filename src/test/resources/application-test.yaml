@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    bootstrap-servers: ${embedded.kafka.brokerList}
+    listener:
+      missing-topics-fatal: true
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+  rabbitmq:
+    addresses: ${embedded.rabbitmq.host}:${embedded.rabbitmq.port}
+    address-shuffle-mode: random
+    virtual-host: virtual-host
+    username: admin
+    password: rabbitmq
+    connection-timeout: 60s
+    channel-rpc-timeout: 60s
+    dynamic: false
+    template:
+      retry:
+        enabled: true
+        initial-interval: 100ms
+        max-attempts: 3

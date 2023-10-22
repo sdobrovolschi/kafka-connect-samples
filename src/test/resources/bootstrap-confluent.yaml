@@ -1,0 +1,19 @@
+embedded:
+  kafka:
+    docker-image: confluentinc/cp-kafka:7.5.1
+#    docker-image: quay.io/strimzi/kafka:0.38.0-kafka-3.6.0
+    schema-registry:
+      docker-image: confluentinc/cp-schema-registry:7.5.1
+      enabled: true
+    topicsToCreate: events, events-dlt
+  rabbitmq:
+    docker-image: rabbitmq:3.11.10-management-alpine
+    files-to-include:
+      - classpath-resource: rabbitmq/rabbitmq.conf
+        container-path: /
+      - classpath-resource: rabbitmq/definitions.json
+        container-path: /
+    env:
+      RABBITMQ_CONFIG_FILE: /rabbitmq.conf
+    vhost: virtual-host
+

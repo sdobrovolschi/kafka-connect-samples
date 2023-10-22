@@ -1,0 +1,17 @@
+{
+  "name": "RabbitMQSourceConnector",
+  "config" : {
+    "connector.class": "io.confluent.connect.rabbitmq.RabbitMQSourceConnector",
+    "tasks.max": "1",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "rabbitmq.host": "rabbitmq.testcontainer.docker",
+    "rabbitmq.port": "5672",
+    "rabbitmq.virtual.host": "virtual-host",
+    "rabbitmq.username": "admin",
+    "rabbitmq.password": "rabbitmq",
+    "rabbitmq.queue": "events.consumer",
+    "confluent.topic.bootstrap.servers": "kafka-broker.testcontainer.docker:9094",
+    "confluent.topic.replication.factor": 1,
+    "kafka.topic": "events"
+  }
+}
